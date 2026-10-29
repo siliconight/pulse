@@ -1,0 +1,3 @@
+const assert=require('node:assert/strict'),{render}=require('../dist/emotion-core');
+for(const kind of ['pulse','rise']){const a=render({kind,duration:2,sampleRate:48000});assert.equal(a.length,96000);let peak=0,energy=0;for(const x of a){assert(Number.isFinite(x));peak=Math.max(peak,Math.abs(x));energy+=x*x}assert(peak<1&&peak>.01);assert(energy>1);assert.equal(a[0],0);assert(Math.abs(a.at(-1))<.001);assert.deepEqual(a,render({kind,duration:2,sampleRate:48000}));}
+assert.throws(()=>render({kind:'bad'}));assert.throws(()=>render({kind:'rise',duration:1000}));console.log('PASS: bounded finite synthesis, duration, deterministic output and edge fades');
