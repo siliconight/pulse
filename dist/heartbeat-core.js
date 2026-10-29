@@ -1,0 +1,2 @@
+/* Double triangular heartbeat envelope; gain never boosts above unity. */
+(function(root){const api={values(seconds,bpm,muffle,strength){const phase=((seconds*bpm/60)%1+1)%1;const triangle=(center,width)=>Math.max(0,1-Math.abs(phase-center)/width);const pulse=Math.max(triangle(.10,.10),.65*triangle(.32,.12));const db=-12*strength*(1-pulse);return {gain:Math.pow(10,db/20),hz:Math.min(18000,18000*Math.pow(500/18000,muffle)*(1+1.8*strength*pulse)),pulse};}};if(typeof module!=='undefined')module.exports=api;else root.PulseHeartbeat=api;})(globalThis);
