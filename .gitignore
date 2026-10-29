@@ -1,0 +1,15 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+!.env.example
+*.log
+*.wav
+*.mp3
+*.aiff
+*.flac
+*.ogg
+*.zip
+*.tar.gz
+uploads/
+exports/
