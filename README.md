@@ -14,7 +14,7 @@ The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. Th
 
 ### Start with a track
 
-1. Drop in a WAV or use the demo. Enter the BPM it was recorded at. If you don't know it, use **Detect BPM** in Prepare audio clips and listen to confirm the estimate.
+1. Drop in a WAV, MP3, FLAC, OGG, M4A, AAC, or AIFF file, or use the demo. Browser codec support varies; PCM WAV and MP3 are the safest starting points. Enter the BPM it was recorded at. If you don't know it, use **Detect BPM** in Prepare audio clips and listen to confirm the estimate.
 2. In **Scene & emotion**, choose a starting point: Slow heartbeat, Build up, Tension, Menu, Level, Prep, Going Hot, Credits, Cinematic Lo-fi, or Downed / Bleeding Out. Press **Play cue timeline** to hear it.
 3. Change the pace, cue timing, and effect controls until the moment feels right. Save your direction in the browser or export a direction JSON to share or back up.
 4. Choose **Record WAV take** to capture a performed scene, or go to **Prepare audio clips** to cut beat-aligned loops from the original track.
@@ -23,7 +23,7 @@ The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. Th
 
 ### Bring riffs, stems, and alternate songs
 
-Open **Game integration → Project inputs & delivery readiness**. Keep one finished WAV in the main source slot for cutting and add up to 24 more WAV references. Label each extra file as a riff, stem, finished mix, or alternate song, then assign its intended game state. Pulse reads basic format and duration; it does not yet mix those extra files into generated states. Export a project plan JSON to preserve their names and assignments. Audio is not embedded, and reopening the plan requires reloading the WAVs.
+Open **Game integration → Project inputs & delivery readiness**. Keep one finished audio track in the main source slot for cutting and add up to 24 more WAV references. Label each extra file as a riff, stem, finished mix, or alternate song, then assign its intended game state. Pulse reads basic format and duration; it does not yet mix those extra files into generated states. Export a project plan JSON to preserve their names and assignments. Audio is not embedded, and reopening the plan requires reloading the audio files.
 
 The checklist reports whether a source and approved clips exist, and lets you explicitly mark meter, state coverage, joins, mix, and engine import as reviewed. It is a planning aid, not a mastering certificate.
 
@@ -78,7 +78,7 @@ python3 scripts/package.py
 
 The outputs are `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Mac ZIP carries Intel and Apple Silicon executables and selects the right one at launch. The Windows ZIP carries an x64 executable. Runtime users do not need Go, Python, or Node.js.
 
-Push source first, then a version tag matching `package.json` (currently `v0.10.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
+Push source first, then a version tag matching `package.json` (currently `v0.11.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
 
 The portable release has no native installer, signing, automatic updates, or native file picker. Browser pitch preservation and recording behavior vary by browser. The launcher uses local Host checks and a same-origin shutdown token. Pushing this repo does not automatically deploy the separate hosted site.
 
