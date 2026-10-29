@@ -1,85 +1,69 @@
 # Pulse — Tempo Lab
 
-Browser-based music direction and WAV clip preparation by Brannen Graves.
+**Shape one piece of music around the moment.** Pulse lets composers, directors, and game teams try tempo changes, emotional effects, and event-ready loops using a finished WAV. Hear an idea, adjust it, and take the audio or direction with you.
 
-## Download and open
+By Brannen Graves.
 
-Download **pulse-mac.zip** or **pulse-windows.zip** from [Releases](https://github.com/siliconight/pulse/releases), extract the entire folder, then double-click **Start Pulse**. The release ZIPs are separate from GitHub's automatic Source code downloads.
+## For creators
 
-The launcher bundles everything it needs. Users do not install Node.js, Python, or Go. Pulse opens in the default browser at http://127.0.0.1:48761 and runs offline. Keep the launcher window open; finish recording and download your work before choosing **Stop Pulse** in the browser. Closing only the browser tab does not stop the launcher. Starting it again reopens an existing session.
+### Get Pulse
 
-Mac target: Big Sur 11 or newer, Intel and Apple Silicon. Windows target: Windows 10/11 x64. These are unsigned builds; OS security prompts may appear. Only open downloaded software you trust. On Mac, right-click Open or Privacy & Security may be needed. Browser and audio compatibility require real-device testing; Chrome is the initial test browser. This package does not include a browser.
+Download [Pulse for Mac or Windows](https://github.com/siliconight/pulse/releases), unzip the download, and double-click **Start Pulse**. It opens in your browser and works locally, without an account or internet connection. Choose **Stop Pulse** when you're done. If Releases is empty, the first downloadable release has not been published yet.
 
-Your presets stay in this browser's local storage. This local address has separate storage from the hosted app and the development server; use direction JSON export/import to move presets. Downloads follow browser settings. Keep the extracted folder together.
+The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. The Windows package targets Windows 10/11 x64. These first packages are unsigned, so your computer may ask you to approve opening them. For Mac, try right-click → Open; on Windows, review the SmartScreen prompt. Keep the extracted folder together.
 
-## Run from source
+### Start with a track
 
-Install Node.js (includes npm), then run from this folder:
+1. Drop in a WAV or use the demo. Enter the BPM it was recorded at. If you don't know it, use **Detect BPM** in Prepare audio clips and listen to confirm the estimate.
+2. In **Scene & emotion**, choose a starting point: Slow heartbeat, Build up, Tension, Menu, Level, Prep, Going Hot, Credits, Cinematic Lo-fi, or Downed / Bleeding Out. Press **Play cue timeline** to hear it.
+3. Change the pace, cue timing, and effect controls until the moment feels right. Save your direction in the browser or export a direction JSON to share or back up.
+4. Choose **Record WAV take** to capture a performed scene, or go to **Prepare audio clips** to cut beat-aligned loops from the original track.
+
+**Downed / Bleeding Out** gradually slows the music and a double heartbeat over 10 seconds, muffles the highs, and holds that feeling until you choose Revive or Stop. Its Speed, Muffle, and Heartbeat strength controls let you shape the effect.
+
+### What comes out
+
+- **WAV takes** capture performed tempo changes and effects in real time, up to 120 seconds.
+- **Clip WAVs** are cuts of your original recording at its original pace. Use the time signature and BPM to suggest lengths, then review the boundaries before exporting.
+- **Direction JSON** carries your scene settings and cues for another session or collaborator. It does not contain the audio.
+
+Your browser chooses the download folder. Your music is processed on your computer. Saved directions live in that browser's local storage, so export JSON for a durable copy. A full track repeated end to start may click; listen to the join before using it as a game loop.
+
+Pulse is currently a creative audition and clip preparation tool. It is not yet a Logic plug-in or a live Godot audio engine. Recorded scene takes use browser timing, so check timing and sound quality before final delivery.
+
+## For engineers
+
+### Run the source
+
+Install Node.js, then from the repository root run:
 
 ```sh
 npm start
 ```
 
-Open http://localhost:8000 in Chrome. Keep the tab visible during playback and recording. Localhost supports the audio worklet used for recording. No npm packages or build step are required.
+Open http://localhost:8000. There are no npm dependencies or build steps for local development. The release launcher instead embeds the static `dist/` app in a small Go executable and serves it at http://127.0.0.1:48761. It opens the default browser and adds a Stop Pulse control. It binds to loopback only.
 
-## Use
-
-Load a WAV or try the demo. Enter its recorded BPM. Choose Scene & emotion for tempo directions, game presets, and emotion layers, or Prepare audio clips for beat-grid cuts and WAV exports. BPM detection and editable time signatures are available in clip preparation.
-
-Downed / Bleeding Out slows the music and heartbeat over 10 seconds, then holds. Revive returns to normal over four seconds. The BPM must be accurate; repeating an entire track does not guarantee a seamless join.
-
-Record WAV take captures a performed scene in real time, up to 120 seconds. Ordinary clip exports use the original source tempo. Downloads go to the browser's configured download folder. Audio is processed locally; direction JSON does not contain audio.
-
-## Check
+Tests:
 
 ```sh
 npm test
+go test ./...
 ```
 
-Tests use Node's built-in assertions, with no external dependencies. Automated tests do not replace listening tests or Mac/browser compatibility checks.
+`dist/` contains the application source and audio workers; `tests/` contains timing, meter, BPM, clip, and effect checks; `launcher.go` handles portable local startup; `scripts/package.py` assembles release ZIPs. `.openai/hosting.json` identifies the separate hosted site and is not a credential.
 
-## Layout
+### Build and release
 
-- `dist/`: directly served HTML, JavaScript, audio workers, and DSP helpers. These are the source files; do not ignore this folder.
-- `tests/`: Node-based checks for timing, meter, BPM detection, clip assets, and generated effects.
-- `scripts/`: local development server and test runner.
-- `.openai/hosting.json`: existing hosted-site identity and static directory. It is not a credential. Preserve it when updating that deployment.
-
-## Current limits
-
-This is a browser prototype, not a Logic Audio Unit or a native Godot audio engine. Pitch preservation depends on the browser. Playback scheduling and recorded takes are not sample-accurate mastering. Game presets are editable directions, not live game-event integrations. Separate generated layers are not certified seamless loops.
-
-## Source and hosting
-
-Intended GitHub repository: https://github.com/siliconight/pulse
-
-The existing hosted app uses a separate hosting-managed Git repository. Pushing to GitHub does not automatically update that site; deployment automation is not configured here.
-
-A license has not yet been selected for this repository.
-
-## Build portable packages (maintainers)
-
-Install Go **1.24.13** and Python 3, then run:
+Install Go **1.24.13** and Python 3. Go 1.24 is the last Go series supporting macOS 11.
 
 ```sh
-go test ./...
 python3 scripts/package.py
 ```
 
-This creates `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Go executable embeds `dist/`; build again after changing the web app. The Mac package chooses its Intel or Apple Silicon binary automatically.
+The outputs are `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Mac ZIP carries Intel and Apple Silicon executables and selects the right one at launch. The Windows ZIP carries an x64 executable. Runtime users do not need Go, Python, or Node.js.
 
-Go 1.24 is the last Go series supporting macOS 11. This is a legacy compatibility toolchain and needs a security/support review before broader distribution. The launcher binds only to loopback, rejects unexpected Host headers, and requires same-origin authenticated shutdown requests. It exposes no upload or arbitrary file-write endpoint.
+Push source first, then a version tag matching `package.json` (currently `v0.2.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
 
-## Publish a release
+The portable release has no native installer, signing, automatic updates, or native file picker. Browser pitch preservation and recording behavior vary by browser. The launcher uses local Host checks and a same-origin shutdown token. Pushing this repo does not automatically deploy the separate hosted site.
 
-Push this source to your repository. Match `package.json` version to the tag:
-
-```sh
-git tag v0.2.0
-git push origin main
-git push origin v0.2.0
-```
-
-GitHub Actions runs Node and Go tests on Linux, Mac, and Windows, builds the ZIPs, and creates a **draft release**. Download its assets and check first launch, WAV loading, BPM detection, Downed/Revive, recording, exports, stop/relaunch, and paths containing spaces on actual Mac and Windows machines. Big Sur itself is not covered by the hosted CI runners. Publish the draft after those checks. You can also run the workflow manually to get downloadable build artifacts without creating a release.
-
-Signing, native installers, automatic updates, and native file dialogs are deferred. This portable release does not change the hosted app.
+A license has not yet been selected for this repository.
