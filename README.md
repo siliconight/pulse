@@ -21,6 +21,22 @@ The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. Th
 
 **Downed / Bleeding Out** gradually slows the music and a double heartbeat over 10 seconds, muffles the highs, and holds that feeling until you choose Revive or Stop. Its Speed, Muffle, and Heartbeat strength controls let you shape the effect.
 
+### Bring riffs, stems, and alternate songs
+
+Open **Game integration → Project inputs & delivery readiness**. Keep one finished WAV in the main source slot for cutting and add up to 24 more WAV references. Label each extra file as a riff, stem, finished mix, or alternate song, then assign its intended game state. Pulse reads basic format and duration; it does not yet mix those extra files into generated states. Export a project plan JSON to preserve their names and assignments. Audio is not embedded, and reopening the plan requires reloading the WAVs.
+
+The checklist reports whether a source and approved clips exist, and lets you explicitly mark meter, state coverage, joins, mix, and engine import as reviewed. It is a planning aid, not a mastering certificate.
+
+### Make a game-state draft
+
+In **Prepare audio clips**, set the recorded BPM, time signature, downbeat, and phrase length. Choose **Build game-state draft**. Pulse assigns successive phrases to Menu, Level, Prep, Going Hot, Downed, Recovery, and Credits with suggested filtering. These labels are starting points; Pulse does not recognize narrative structure from a finished mix. Choose **Find musical phrases** to see ranked candidates on the waveform. Hear A and B repeating, then keep the phrase you prefer. The ranking uses bar-level energy and coarse texture; it does not understand chords or song form. Use **Find smoother cut** on a loop to search 25 ms around its beat-aligned edges for a quieter boundary without changing its length. Hear repeat and approve the suggested edit yourself. Listen to each repeat and transition, adjust cuts and effects, then check **Include in export** only for clips you approve.
+
+The Wwise handoff export includes WAVs, a manifest, `transitions.json`, and a manual Wwise setup guide. It does not build a Wwise project or SoundBank. Godot and files-only exports remain available.
+
+### Try a sequence (optional)
+
+Open **Loop arranger** in the Review step. Add approved loops in the order a player might hear them, set how many bars each should hold, and press **Play sequence**. Choose **Suggest joins** to check level differences and strong transients at boundaries. Pulse proposes a beat-aligned, equal-power fade, then auditions it through the sequence. Saved transition rules take priority. Listen for harmonic or rhythmic clashes and save a rule for routes you approve. The sequence is an audition path; suggestions are not automatically exported as approved rules. It does not install a gameplay controller or render a linear preview WAV. Your editable loop plan keeps the steps.
+
 ### What comes out
 
 - **WAV takes** capture performed tempo changes and effects in real time, up to 120 seconds.
@@ -62,8 +78,10 @@ python3 scripts/package.py
 
 The outputs are `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Mac ZIP carries Intel and Apple Silicon executables and selects the right one at launch. The Windows ZIP carries an x64 executable. Runtime users do not need Go, Python, or Node.js.
 
-Push source first, then a version tag matching `package.json` (currently `v0.2.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
+Push source first, then a version tag matching `package.json` (currently `v0.10.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
 
 The portable release has no native installer, signing, automatic updates, or native file picker. Browser pitch preservation and recording behavior vary by browser. The launcher uses local Host checks and a same-origin shutdown token. Pushing this repo does not automatically deploy the separate hosted site.
 
 A license has not yet been selected for this repository.
+
+Security and verification notes: see [SECURITY.md](SECURITY.md).

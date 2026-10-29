@@ -1,6 +1,6 @@
 {
   "name": "pulse-tempo-lab",
-  "version": "0.2.0",
+  "version": "0.10.0",
   "private": true,
   "scripts": {
     "start": "node scripts/serve.cjs",

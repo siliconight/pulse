@@ -45,6 +45,11 @@ func handler(token string, stop func()) http.Handler {
 		}
 		w.Header().Set("Cache-Control", "no-store")
 		w.Header().Set("X-Content-Type-Options", "nosniff")
+		w.Header().Set("Referrer-Policy", "no-referrer")
+		w.Header().Set("X-Frame-Options", "DENY")
+		w.Header().Set("Cross-Origin-Resource-Policy", "same-origin")
+		w.Header().Set("Cross-Origin-Opener-Policy", "same-origin")
+		w.Header().Set("Permissions-Policy", "camera=(), microphone=(), geolocation=()")
 		if r.URL.Path == "/__pulse/health" {
 			w.Header().Set("Content-Type", "text/plain")
 			fmt.Fprint(w, "pulse-local-v1")
@@ -101,7 +106,7 @@ func main() {
 		default:
 		}
 	}
-	server := &http.Server{Handler: handler(hex.EncodeToString(bytes), stop), ReadHeaderTimeout: 5 * time.Second}
+	server := &http.Server{Handler: handler(hex.EncodeToString(bytes), stop), ReadHeaderTimeout: 5 * time.Second, ReadTimeout: 10 * time.Second, WriteTimeout: 30 * time.Second, IdleTimeout: 30 * time.Second, MaxHeaderBytes: 16 << 10}
 	go func() {
 		if err := server.Serve(listener); err != nil && err != http.ErrServerClosed {
 			fmt.Fprintln(os.Stderr, err)
