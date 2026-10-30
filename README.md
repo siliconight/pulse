@@ -8,13 +8,15 @@ By Brannen Graves.
 
 ### Get Pulse
 
-Download [Pulse for Mac or Windows](https://github.com/siliconight/pulse/releases), unzip the download, and double-click **Start Pulse**. It opens in your browser and works locally, without an account or internet connection. Choose **Stop Pulse** when you're done. If Releases is empty, the first downloadable release has not been published yet.
+**Latest stable release:** [Download for Windows](https://github.com/siliconight/pulse/releases/latest/download/pulse-windows.zip) · [Download for Mac](https://github.com/siliconight/pulse/releases/latest/download/pulse-mac.zip)
+
+Download the ZIP for your computer, right-click it and choose **Extract All** (Windows) or double-click it to unzip (Mac), then open the extracted **Pulse** folder and double-click **Start Pulse**. Keep the launcher window open while using Pulse in your browser. Use **Stop Pulse** in the app when finished. These links point to the latest **published** GitHub release, so they begin working after you publish the v0.12.0 draft. If they do not work yet, [open all releases](https://github.com/siliconight/pulse/releases).
 
 The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. The Windows package targets Windows 10/11 x64. These first packages are unsigned, so your computer may ask you to approve opening them. For Mac, try right-click → Open; on Windows, review the SmartScreen prompt. Keep the extracted folder together.
 
 ### Start with a track
 
-1. Drop in a WAV, MP3, FLAC, OGG, M4A, AAC, or AIFF file, or use the demo. Browser codec support varies; PCM WAV and MP3 are the safest starting points. Enter the BPM it was recorded at. If you don't know it, use **Detect BPM** in Prepare audio clips and listen to confirm the estimate.
+1. Drop in a WAV, MP3, FLAC, OGG, M4A, AAC, or AIFF file, or use the demo. Browser codec support varies; PCM WAV and MP3 are the safest starting points. Enter the BPM it was recorded at, or press **Detect BPM** beside Original BPM and listen to confirm an estimate (including half or double tempo). The selected BPM also sets the clip grid.
 2. In **Scene & emotion**, choose a starting point: Slow heartbeat, Build up, Tension, Menu, Level, Prep, Going Hot, Credits, Cinematic Lo-fi, or Downed / Bleeding Out. Press **Play cue timeline** to hear it.
 3. Change the pace, cue timing, and effect controls until the moment feels right. Save your direction in the browser or export a direction JSON to share or back up.
 4. Choose **Record WAV take** to capture a performed scene, or go to **Prepare audio clips** to cut beat-aligned loops from the original track.
@@ -78,7 +80,7 @@ python3 scripts/package.py
 
 The outputs are `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Mac ZIP carries Intel and Apple Silicon executables and selects the right one at launch. The Windows ZIP carries an x64 executable. Runtime users do not need Go, Python, or Node.js.
 
-Push source first, then a version tag matching `package.json` (currently `v0.11.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
+Push source first, then a version tag matching `package.json` (currently `v0.12.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
 
 The portable release has no native installer, signing, automatic updates, or native file picker. Browser pitch preservation and recording behavior vary by browser. The launcher uses local Host checks and a same-origin shutdown token. Pushing this repo does not automatically deploy the separate hosted site.
 
