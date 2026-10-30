@@ -1,0 +1,4 @@
+const assert=require('node:assert/strict');global.PulseAmbient=require('../dist/ambient-core.js');global.PulseHeartbeat=require('../dist/heartbeat-core.js');const B=require('../dist/scene-batch-core.js');
+assert.equal(B.folder('My Song.wav',new Date(2026,9,30,14,30,25)),'My_Song_Scenes_2026-10-30_143025');assert.equal(B.safeName('../../evil.wav'),'evil');assert.equal(B.safeName('CON.wav'),'Track_CON');
+const sr=8000,x=Float32Array.from({length:sr*4},(_,i)=>.8*Math.sin(i*.08));for(const {id} of B.scenes){const r=B.render([x],sr,id,{seconds:2});assert.equal(r.channels.length,2);assert.equal(r.channels[0].length,sr*2);for(const ch of r.channels){assert(ch[0]===0&&ch.at(-1)===0);for(const v of ch)assert(Number.isFinite(v)&&Math.abs(v)<=.980001)}}
+assert.throws(()=>B.render([x],sr,'bad'));assert.throws(()=>B.render([x],sr,'Menu',{seconds:NaN}));console.log('PASS: eight scene bakes produce bounded faded stereo; local timestamp and safe names');

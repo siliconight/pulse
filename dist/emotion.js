@@ -1,6 +1,7 @@
 (() => {
 'use strict';
 const el=id=>document.getElementById(id);
+let sourceRevision=0;
 let sourceBlob=null,sourceName='',decoded=null,prepared=null,worker=null,ticket=0,voice=null,fxContext=null,musicFilter=null,musicGain=null,layerGain=null,sink=null,wavURL=null;
 const report=s=>el('emotionStatus').textContent=s;
 const num=(id,min,max)=>{const n=Math.max(min,Math.min(max,Number(el(id).value)||min));el(id).value=n;return n};
@@ -12,9 +13,9 @@ const settingIds=['emotionKind','emotionDuration','emotionIntensity','emotionMix
 function settings(){return Object.fromEntries([...settingIds.map(id=>[id,el(id).value]),['emotionWithScene',el('emotionWithScene').checked]])}
 function validSettings(s){for(const [id,min,max] of [['downedSpeed',50,90],['downedMuffle',0,100],['downedStrength',0,100]])if(s?.[id]!==undefined&&(!Number.isFinite(Number(s[id]))||Number(s[id])<min||Number(s[id])>max))return false;if(s?.musicTone!==undefined&&!['natural','lofi','downed'].includes(s.musicTone))return false;if(!s||typeof s.emotionWithScene!=='boolean')return false;for(const [id,choices]of [['emotionKind',['pulse','rise','swell','ambient']],['emotionFilter',['none','reveal','close']],['emotionEnding',['release','hold']]])if(!choices.includes(s[id]))return false;for(const [id,min,max]of [['emotionDuration',2,60],['emotionIntensity',0,100],['emotionMix',0,100],['pulseBpm',30,200],['riseCycle',2,30],['swellStart',0,600]])if(!Number.isFinite(Number(s[id]))||Number(s[id])<min||Number(s[id])>max)return false;return true}
 window.PulseFX={
- settings,validate:validSettings,setTone(tone){if(tone==='downed'){el('downedSpeed').value=70;el('downedMuffle').value=75;el('downedStrength').value=70;el('emotionWithScene').checked=false;}el('musicTone').value=['lofi','downed'].includes(tone)?tone:'natural';syncDowned();resetFilter()},
+ settings,validate:validSettings,getSource,sourceRevision:()=>sourceRevision,offlineLayer(){return prepared?{...prepared,mix:Number(el('emotionMix').value)/100}:null},setTone(tone){if(tone==='downed'){el('downedSpeed').value=70;el('downedMuffle').value=75;el('downedStrength').value=70;el('emotionWithScene').checked=false;}el('musicTone').value=['lofi','downed'].includes(tone)?tone:'natural';syncDowned();resetFilter()},
  restore(s){if(!validSettings(s))return false;invalidate();settingIds.forEach(id=>el(id).value=s[id]??({musicTone:'natural',downedSpeed:70,downedMuffle:75,downedStrength:70}[id]??''));el('emotionWithScene').checked=s.emotionWithScene;syncDowned();report('Layer settings restored. Prepare the layer again to use it.');return true},
- setSource(blob,name){sourceBlob=blob;sourceName=name;decoded=null;invalidate()},
+ setSource(blob,name){sourceRevision++;sourceBlob=blob;sourceName=name;decoded=null;invalidate()},
  connect(context,source,destination){fxContext=context;sink=destination;musicFilter=context.createBiquadFilter();musicFilter.type='lowpass';musicFilter.Q.value=.707;musicFilter.frequency.value=el('musicTone').value==='lofi'?2400:context.sampleRate*.49;musicGain=context.createGain();source.connect(musicFilter).connect(musicGain).connect(destination);layerGain=context.createGain();layerGain.gain.value=.25;layerGain.connect(destination)}
 };
 function syncDowned(){const on=el('musicTone').value==='downed';el('downedControls').classList.toggle('hidden',!on);audio.loop=on;}
