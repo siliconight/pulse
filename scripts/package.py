@@ -4,6 +4,7 @@ import os, subprocess, zipfile, hashlib, json
 root=Path(__file__).resolve().parent.parent
 out=root/'releases';out.mkdir(exist_ok=True)
 version=json.loads((root/'package.json').read_text())['version']
+subprocess.run(['python3',str(root/'scripts/version.py')],check=True)
 go=os.environ.get('GO','go')
 if not subprocess.check_output([go,'version'],text=True).split()[2].startswith('go1.24.'):
     raise SystemExit('Use Go 1.24.x: newer Go runtimes do not support macOS 11.')
@@ -31,7 +32,7 @@ for platform,arches in [('mac',['amd64','arm64']),('windows',['amd64'])]:
         for arch in arches:
             binary=out/f'pulse-{platform}-{arch}'
             env={**os.environ,'CGO_ENABLED':'0','GOOS':'darwin' if platform=='mac' else 'windows','GOARCH':arch,'GOTOOLCHAIN':'local'}
-            subprocess.run([go,'build','-trimpath','-ldflags=-s -w','-o',str(binary),'.'],cwd=root,env=env,check=True)
+            subprocess.run([go,'build','-trimpath',f'-ldflags=-s -w -X main.version={version}','-o',str(binary),'.'],cwd=root,env=env,check=True)
             name=f'Pulse/app-files/pulse-{arch}'+('.exe' if platform=='windows' else '')
             add(z,name,binary.read_bytes(),True);binary.unlink()
         if platform=='mac':
@@ -48,6 +49,9 @@ exit "$status"
         else:
             add(z,'Pulse/Start Pulse.bat','@echo off\r\ncd /d "%~dp0"\r\n"app-files\\pulse-amd64.exe"\r\nif errorlevel 1 pause\r\n')
     with zipfile.ZipFile(target) as z: assert z.testzip() is None
+# Keep stable filenames for README links and versioned copies for identifiable downloads.
+for platform in ['mac','windows']:
+    (out/f'pulse-v{version}-{platform}.zip').write_bytes((out/f'pulse-{platform}.zip').read_bytes())
 checks=''.join(hashlib.sha256(p.read_bytes()).hexdigest()+'  '+p.name+'\n' for p in sorted(out.glob('*.zip')))
 (out/'SHA256SUMS.txt').write_text(checks)
 print('Packages ready in',out)

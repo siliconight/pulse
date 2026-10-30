@@ -51,4 +51,4 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           RELEASE_TAG: ${{ github.ref_name }}
-        run: gh release create "$RELEASE_TAG" releases/pulse-mac.zip releases/pulse-windows.zip releases/SHA256SUMS.txt --draft --verify-tag --title "Pulse $RELEASE_TAG" --notes "Portable browser-based release. Download the ZIP for your OS, extract it, and open Start Pulse. Unsigned builds; see READ-ME.txt. Test loading, playback, recording, and export before publishing this draft."
+        run: gh release create "$RELEASE_TAG" releases/*.zip releases/SHA256SUMS.txt --draft --verify-tag --title "Pulse $RELEASE_TAG" --notes "Portable browser-based release. Download the ZIP for your OS, extract it, and open Start Pulse. Unsigned builds; see READ-ME.txt. Test loading, playback, recording, and export before publishing this draft."

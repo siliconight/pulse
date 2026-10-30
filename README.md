@@ -10,7 +10,7 @@ By Brannen Graves.
 
 **Latest stable release:** [Download for Windows](https://github.com/siliconight/pulse/releases/latest/download/pulse-windows.zip) · [Download for Mac](https://github.com/siliconight/pulse/releases/latest/download/pulse-mac.zip)
 
-Download the ZIP for your computer, right-click it and choose **Extract All** (Windows) or double-click it to unzip (Mac), then open the extracted **Pulse** folder and double-click **Start Pulse**. Keep the launcher window open while using Pulse in your browser. Use **Stop Pulse** in the app when finished. These links point to the latest **published** GitHub release, so they begin working after you publish the v0.14.0 draft. If they do not work yet, [open all releases](https://github.com/siliconight/pulse/releases).
+Download the ZIP for your computer, right-click it and choose **Extract All** (Windows) or double-click it to unzip (Mac), then open the extracted **Pulse** folder and double-click **Start Pulse**. Keep the launcher window open while using Pulse in your browser. Use **Stop Pulse** in the app when finished. These links point to the latest **published** GitHub release, so they begin working after you publish the v0.14.1 draft. If they do not work yet, [open all releases](https://github.com/siliconight/pulse/releases).
 
 The Mac package targets macOS Big Sur 11 or newer on Intel and Apple Silicon. The Windows package targets Windows 10/11 x64. These first packages are unsigned, so your computer may ask you to approve opening them. For Mac, try right-click → Open; on Windows, review the SmartScreen prompt. Keep the extracted folder together.
 
@@ -98,9 +98,11 @@ Install Go **1.24.13** and Python 3. Go 1.24 is the last Go series supporting ma
 python3 scripts/package.py
 ```
 
+The version appears next to the Pulse logo, in the launcher, and in batch export manifests. Releases include versioned ZIP filenames as well as stable aliases for the README links. `package.json` is the version source; packaging runs `scripts/version.py` to sync the app label.
+
 The outputs are `releases/pulse-mac.zip`, `releases/pulse-windows.zip`, and `SHA256SUMS.txt`. The Mac ZIP carries Intel and Apple Silicon executables and selects the right one at launch. The Windows ZIP carries an x64 executable. Runtime users do not need Go, Python, or Node.js.
 
-Push source first, then a version tag matching `package.json` (currently `v0.14.0`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
+Push source first, then a version tag matching `package.json` (currently `v0.14.1`). GitHub Actions tests on Linux, Mac, and Windows, builds both packages, and creates a **draft** release. Test WAV loading, playback, effects, recording, export, stop/relaunch, paths with spaces, and OS security prompts on real Mac and Windows devices before publishing. CI does not test Big Sur itself.
 
 The portable release has no native installer, signing, automatic updates, or native file picker. Browser pitch preservation and recording behavior vary by browser. The launcher uses local Host checks and a same-origin shutdown token. Pushing this repo does not automatically deploy the separate hosted site.
 

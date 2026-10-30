@@ -20,6 +20,8 @@ import (
 //go:embed dist/*
 var assets embed.FS
 
+var version = "development"
+
 const address = "127.0.0.1:48761"
 const origin = "http://" + address
 
@@ -113,7 +115,7 @@ func main() {
 			stop()
 		}
 	}()
-	fmt.Println("Pulse is ready:", origin, "\nKeep this launcher open. Use Stop Pulse in the browser when finished.")
+	fmt.Println("Pulse v"+version+" is ready:", origin, "\nKeep this launcher open. Use Stop Pulse in the browser when finished.")
 	if err := openBrowser(origin); err != nil {
 		fmt.Println("Open the address above in your browser.")
 	}
