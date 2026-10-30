@@ -1,0 +1,14 @@
+{
+  "identical": {
+    "linearMidpointDb": 0,
+    "equal_powerMidpointDb": 3.01
+  },
+  "independent": {
+    "linearMidpointDb": -3.022,
+    "equal_powerMidpointDb": -0.012
+  },
+  "opposite": {
+    "linearMidpointDb": "complete cancellation",
+    "equal_powerMidpointDb": "complete cancellation"
+  }
+}

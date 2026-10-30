@@ -1,0 +1,411 @@
+{
+  "method": "Pulse 0.12 heuristics; assumed 4/4, downbeat at zero; mono 11025 Hz decode; no human listening labels",
+  "results": [
+    {
+      "title": "Game BOI 1",
+      "artist": "HoliznaCC0",
+      "url": "https://freemusicarchive.org/music/holiznacc0/gamer-soundtrack-game-boi/game-boi-1/",
+      "license": "CC0 1.0 (track page)",
+      "sha256": "bd0d14b38435587f9518789560125bbe2a97ea5d3a90cfdd7d3882bb56a38cee",
+      "durationSeconds": 165.94,
+      "tempo": {
+        "bpm": 90,
+        "confidence": "Tentative",
+        "score": 0.48534677265943416
+      },
+      "candidates": [
+        {
+          "bars": 4,
+          "count": 59,
+          "top": [
+            {
+              "start": 149.33,
+              "end": 160,
+              "score": -0.266,
+              "reason": "change near a phrase boundary",
+              "cut": {
+                "shiftMs": -11.6,
+                "score": 0.0495,
+                "original": 0.1579
+              }
+            },
+            {
+              "start": 64,
+              "end": 74.67,
+              "score": -0.019,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -23.6,
+                "score": 0.0515,
+                "original": 0.069
+              }
+            },
+            {
+              "start": 144,
+              "end": 154.67,
+              "score": 0.006,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -22.1,
+                "score": 0.0726,
+                "original": 0.2269
+              }
+            }
+          ]
+        },
+        {
+          "bars": 8,
+          "count": 55,
+          "top": [
+            {
+              "start": 138.67,
+              "end": 160,
+              "score": -0.311,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -23,
+                "score": 0.0554,
+                "original": 0.2547
+              }
+            },
+            {
+              "start": 48,
+              "end": 69.33,
+              "score": 0.084,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -10.2,
+                "score": 0.0593,
+                "original": 0.311
+              }
+            },
+            {
+              "start": 72,
+              "end": 93.33,
+              "score": 0.085,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -11.6,
+                "score": 0.0522,
+                "original": 0.3722
+              }
+            }
+          ]
+        }
+      ],
+      "join": {
+        "exit": "bar",
+        "crossfade": 0.33,
+        "fadeCurve": "equal_power",
+        "levelDifferenceDb": -3.8,
+        "issues": [],
+        "confidence": "candidate"
+      }
+    },
+    {
+      "title": "Something In the Air",
+      "artist": "HoliznaCC0",
+      "url": "https://freemusicarchive.org/music/holiznacc0/lo-fi-and-chill/something-in-the-air/",
+      "license": "CC0 1.0 (track page)",
+      "sha256": "934f53a409b4178b86055cbea80936ce084d5820e26db6034d625175a4200a02",
+      "durationSeconds": 131.95,
+      "tempo": {
+        "bpm": 78.4,
+        "confidence": "Tentative",
+        "score": 0.26999840591317187
+      },
+      "candidates": [
+        {
+          "bars": 4,
+          "count": 40,
+          "top": [
+            {
+              "start": 107.14,
+              "end": 119.39,
+              "score": 0.009,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 16.7,
+                "score": 0.1024,
+                "original": 0.1469
+              }
+            },
+            {
+              "start": 76.53,
+              "end": 88.78,
+              "score": 0.098,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -0.9,
+                "score": 0.0331,
+                "original": 0.1739
+              }
+            },
+            {
+              "start": 79.59,
+              "end": 91.84,
+              "score": 0.105,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 0.4,
+                "score": 0.0324,
+                "original": 0.0411
+              }
+            }
+          ]
+        },
+        {
+          "bars": 8,
+          "count": 36,
+          "top": [
+            {
+              "start": 52.04,
+              "end": 76.53,
+              "score": 0.019,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -20.3,
+                "score": 0.0346,
+                "original": 0.0616
+              }
+            },
+            {
+              "start": 15.31,
+              "end": 39.8,
+              "score": 0.051,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 13.2,
+                "score": 0.0644,
+                "original": 0.1799
+              }
+            },
+            {
+              "start": 27.55,
+              "end": 52.04,
+              "score": 0.072,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -24.7,
+                "score": 0.0497,
+                "original": 0.2388
+              }
+            }
+          ]
+        }
+      ],
+      "join": {
+        "exit": "bar",
+        "crossfade": 0.58,
+        "fadeCurve": "equal_power",
+        "levelDifferenceDb": 8.7,
+        "issues": [
+          "level difference"
+        ],
+        "confidence": "review"
+      }
+    },
+    {
+      "title": "Dark Ambient Cave Experience",
+      "artist": "techtheist",
+      "url": "https://freemusicarchive.org/music/techtheist/fma2021-part-2/dark-ambient-cave-experience/",
+      "license": "CC0 1.0 (track page)",
+      "sha256": "28fb339a587855f9904fc6a11d77efb037990d30c5e30d003198d25564f2bdba",
+      "durationSeconds": 846.55,
+      "tempo": {
+        "bpm": 164.6,
+        "confidence": "Tentative",
+        "score": 0.46366408999176345
+      },
+      "candidates": [
+        {
+          "bars": 4,
+          "count": 577,
+          "top": [
+            {
+              "start": 591.98,
+              "end": 597.81,
+              "score": -0.074,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 0.2,
+                "score": 0.0229,
+                "original": 0.0249
+              }
+            },
+            {
+              "start": 55.41,
+              "end": 61.24,
+              "score": -0.05,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 25,
+                "score": 0.0228,
+                "original": 0.163
+              }
+            },
+            {
+              "start": 64.16,
+              "end": 69.99,
+              "score": -0.038,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 23,
+                "score": 0.0069,
+                "original": 0.0553
+              }
+            }
+          ]
+        },
+        {
+          "bars": 8,
+          "count": 573,
+          "top": [
+            {
+              "start": 209.96,
+              "end": 221.63,
+              "score": 0.01,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 4.5,
+                "score": 0.0369,
+                "original": 0.0513
+              }
+            },
+            {
+              "start": 680.92,
+              "end": 692.59,
+              "score": 0.016,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 6.7,
+                "score": 0.0259,
+                "original": 0.0395
+              }
+            },
+            {
+              "start": 16.04,
+              "end": 27.7,
+              "score": 0.018,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -9.4,
+                "score": 0.0393,
+                "original": 0.0624
+              }
+            }
+          ]
+        }
+      ],
+      "join": {
+        "exit": "bar",
+        "crossfade": 0.18,
+        "fadeCurve": "equal_power",
+        "levelDifferenceDb": -2.1,
+        "issues": [],
+        "confidence": "candidate"
+      }
+    },
+    {
+      "title": "Classic",
+      "artist": "HoliznaCC0",
+      "url": "https://freemusicarchive.org/music/holiznacc0/rock-montage/classic/",
+      "license": "CC0 1.0 (track page)",
+      "sha256": "eb9f2e7f92278f1ee39990b4a4ecf948c9b5cee0892c57d0fac29e614717d739",
+      "durationSeconds": 149.69,
+      "tempo": {
+        "bpm": 60.3,
+        "confidence": "Tentative",
+        "score": 0.4383637072158525
+      },
+      "candidates": [
+        {
+          "bars": 4,
+          "count": 34,
+          "top": [
+            {
+              "start": 103.48,
+              "end": 119.4,
+              "score": 0.092,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -15.6,
+                "score": 0.0905,
+                "original": 0.2837
+              }
+            },
+            {
+              "start": 107.46,
+              "end": 123.38,
+              "score": 0.099,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 2.9,
+                "score": 0.101,
+                "original": 0.2343
+              }
+            },
+            {
+              "start": 51.74,
+              "end": 67.66,
+              "score": 0.105,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -10,
+                "score": 0.0905,
+                "original": 0.3607
+              }
+            }
+          ]
+        },
+        {
+          "bars": 8,
+          "count": 30,
+          "top": [
+            {
+              "start": 103.48,
+              "end": 135.32,
+              "score": 0.06,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 2.9,
+                "score": 0.088,
+                "original": 0.2545
+              }
+            },
+            {
+              "start": 67.66,
+              "end": 99.5,
+              "score": 0.075,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": 13.4,
+                "score": 0.0858,
+                "original": 0.2867
+              }
+            },
+            {
+              "start": 31.84,
+              "end": 63.68,
+              "score": 0.092,
+              "reason": "similar opening and ending texture",
+              "cut": {
+                "shiftMs": -4.5,
+                "score": 0.087,
+                "original": 0.2032
+              }
+            }
+          ]
+        }
+      ],
+      "join": {
+        "exit": "bar",
+        "crossfade": 0.5,
+        "fadeCurve": "equal_power",
+        "levelDifferenceDb": 1,
+        "issues": [],
+        "confidence": "candidate"
+      }
+    }
+  ]
+}

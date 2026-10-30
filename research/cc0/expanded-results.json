@@ -1,0 +1,267 @@
+{
+  "method": "Independent 30-second first/middle/last windows. No downbeat or tempo truth labels. Raw spread is estimator disagreement, not measured tempo drift.",
+  "results": [
+    {
+      "id": "jazz-1",
+      "artist": "HoliznaCC0",
+      "title": "1 (jazz)",
+      "page": "https://freemusicarchive.org/music/holiznacc0/busted-guitar-jazz/1-jazz/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "d672ce325341cd0057079ee2fc32518acadff13723203b1c11be9c5ead709fbb",
+      "durationSeconds": 122.95,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 90.5,
+          "confidence": "Tentative",
+          "score": 0.32536527705112744
+        },
+        {
+          "startSeconds": 46.48,
+          "bpm": 90.5,
+          "confidence": "Tentative",
+          "score": 0.4031489003527424
+        },
+        {
+          "startSeconds": 92.95,
+          "bpm": 90.4,
+          "confidence": "Tentative",
+          "score": 0.4820072314847436
+        }
+      ],
+      "rawTempoSpreadPercent": 0.1,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "sonata-1",
+      "artist": "Aaron Dunn",
+      "title": "Sonata No. 1 \u2013 Movement 1",
+      "page": "https://freemusicarchive.org/music/Aaron_Dunn/Sonata_No_1/Sonata_No_1_-_Movement_1/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "f4954e7294b1fa53d6c83c90f61f7c671f6812c428aa5491e809973bcc3303f9",
+      "durationSeconds": 165.51,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 108.2,
+          "confidence": "Tentative",
+          "score": 0.4696360780694798
+        },
+        {
+          "startSeconds": 67.76,
+          "bpm": 116.8,
+          "confidence": "Tentative",
+          "score": 0.4922373369203618
+        },
+        {
+          "startSeconds": 135.51,
+          "bpm": 60,
+          "confidence": "Tentative",
+          "score": 0.2969580716271695
+        }
+      ],
+      "rawTempoSpreadPercent": 94.7,
+      "decodeWarnings": "[mp3float @ 0x55782510f440] Header missing\n[aist#0:0/mp3 @ 0x55782510bf40] Error submitting packet to decoder: Invalid data found when processing input",
+      "eligibleForBenchmark": false
+    },
+    {
+      "id": "cris",
+      "artist": "Art Flower",
+      "title": "Cris",
+      "page": "https://freemusicarchive.org/music/art-flower/all-that-jazz/art-flower-cris/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "ca6d8d36a27594a320096f35b65fd2e8a44964f6ef7e99fcbb71eb867b1dc863",
+      "durationSeconds": 288.94,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "reason": "No stable beat found. Try a rhythmic track or enter BPM manually."
+        },
+        {
+          "startSeconds": 129.47,
+          "bpm": 185.6,
+          "confidence": "Tentative",
+          "score": 0.2898456809460338
+        },
+        {
+          "startSeconds": 258.94,
+          "bpm": 127.2,
+          "confidence": "Tentative",
+          "score": 0.32669185498151415
+        }
+      ],
+      "rawTempoSpreadPercent": null,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "coldness",
+      "artist": "The Wanderer",
+      "title": "Coldness",
+      "page": "https://freemusicarchive.org/music/stranger/seven-elements/coldness/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "dca8003c640dcd0702af61ebcabd45183ea93d1ebb6f37479128cef50140ab88",
+      "durationSeconds": 109.33,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 180.7,
+          "confidence": "Tentative",
+          "score": 0.32692212794913045
+        },
+        {
+          "startSeconds": 39.67,
+          "bpm": 184.7,
+          "confidence": "Tentative",
+          "score": 0.4045943279423837
+        },
+        {
+          "startSeconds": 79.33,
+          "bpm": 89,
+          "confidence": "Tentative",
+          "score": 0.40425788637662885
+        }
+      ],
+      "rawTempoSpreadPercent": 107.5,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "helice",
+      "artist": "Monplaisir",
+      "title": "H\u00e9lice",
+      "page": "https://freemusicarchive.org/music/Monplaisir/Bonjour_from_Paris_Nantes_and_Montreal/Monplaisir_-_Bonjour_from_Paris_Nantes_and_Montreal_-_01_Hlice/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "7a89cd5513243813a750e97d9091eca8ea9e7e83fdd7803ac8ac7d482eda2e78",
+      "durationSeconds": 161.19,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 145.2,
+          "confidence": "Tentative",
+          "score": 0.4044023773903523
+        },
+        {
+          "startSeconds": 65.59,
+          "bpm": 151.7,
+          "confidence": "Tentative",
+          "score": 0.5236556751894018
+        },
+        {
+          "startSeconds": 131.19,
+          "bpm": 148.1,
+          "confidence": "Tentative",
+          "score": 0.33852029703768827
+        }
+      ],
+      "rawTempoSpreadPercent": 4.5,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "4-mei",
+      "artist": "Maarten Schellekens",
+      "title": "4 mei",
+      "page": "https://freemusicarchive.org/music/maarten-schellekens/public-domain-1/4-mei/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "956f7e96b736d729906092eceab484c7b803922f63e04a4f3f54406493e01283",
+      "durationSeconds": 65.83,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 190.7,
+          "confidence": "Tentative",
+          "score": 0.38669483880511535
+        },
+        {
+          "startSeconds": 17.91,
+          "bpm": 126.8,
+          "confidence": "Tentative",
+          "score": 0.3078481337916861
+        },
+        {
+          "startSeconds": 35.83,
+          "bpm": 63,
+          "confidence": "Tentative",
+          "score": 0.3371871997640502
+        }
+      ],
+      "rawTempoSpreadPercent": 202.7,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "lay-down-law",
+      "artist": "Stumble Bee",
+      "title": "Lay down the law",
+      "page": "https://freemusicarchive.org/music/stumble-bee/single/lay-down-the-law/",
+      "license": "CC0 1.0; page checked",
+      "sha256": "e9b8c753a006fbd1557d158b0316ac80324bc01a516f824a1a5ac89f8214a65d",
+      "durationSeconds": 219.04,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 87.7,
+          "confidence": "Tentative",
+          "score": 0.35952690606644516
+        },
+        {
+          "startSeconds": 94.52,
+          "bpm": 90.4,
+          "confidence": "Tentative",
+          "score": 0.42974393693439794
+        },
+        {
+          "startSeconds": 189.04,
+          "bpm": 94.6,
+          "confidence": "Tentative",
+          "score": 0.417138972986594
+        }
+      ],
+      "rawTempoSpreadPercent": 7.9,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    },
+    {
+      "id": "ua-like",
+      "artist": "Rita Braga",
+      "title": "Ua Like No A Like",
+      "page": "https://freemusicarchive.org/music/Revitalize_Music_Contest/Revitalize_Music_Contest/11_Ua_Like_No_A_Like_3",
+      "license": "CC0 1.0; page checked",
+      "sha256": "a8130dae99f588ff1ec7ee181c7c5443f3053d8d16ad91e698d2745c30314ff1",
+      "durationSeconds": 209.29,
+      "withinImportLimit": true,
+      "windows": [
+        {
+          "startSeconds": 0,
+          "bpm": 73.8,
+          "confidence": "Tentative",
+          "score": 0.37105015569078403
+        },
+        {
+          "startSeconds": 89.65,
+          "bpm": 77.7,
+          "confidence": "Tentative",
+          "score": 0.2943557757919935
+        },
+        {
+          "startSeconds": 179.29,
+          "bpm": 169.6,
+          "confidence": "Tentative",
+          "score": 0.2616249508958303
+        }
+      ],
+      "rawTempoSpreadPercent": 129.8,
+      "decodeWarnings": "",
+      "eligibleForBenchmark": true
+    }
+  ]
+}
